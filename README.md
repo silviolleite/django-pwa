@@ -68,6 +68,7 @@ Inject the required meta tags in your base.html (or wherever your HTML &lt;head&
 Troubleshooting
 =====
 While running the Django test server:
+
 1. Verify that `/manifest.json` is being served
 1. Verify that `/serviceworker.js` is being served
 1. Use the Application tab in the Chrome Developer Tools to verify the progressive web app is configured correctly.
