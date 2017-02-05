@@ -1,0 +1,27 @@
+<!-- Path to manifest.json -->
+<link rel="manifest" href="/manifest.json">
+
+<!-- Icons for Apple Devices -->
+{% for icon in PWA_APP_ICONS %}
+    <link rel="apple-touch-icon" href="{{ icon.src }}" sizes="{{ icon.sizes }}">
+{% endfor %}
+
+<meta name="theme-color" content="{{ PWA_APP_THEME_COLOR }}">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="{{ PWA_APP_NAME }}">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<script type="text/javascript">
+    // Initialize the service worker
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('/serviceworker.js').then(function (registration) {
+                // Registration was successful
+                console.log('django-progressive-web-app: ServiceWorker registration successful with scope: ', registration.scope);
+            }).catch(function (err) {
+                // registration failed :(
+                console.log('django-progressive-web-app: ServiceWorker registration failed: ', err);
+            });
+        });
+    }
+</script>
