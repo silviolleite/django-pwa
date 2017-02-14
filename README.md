@@ -45,6 +45,8 @@ PWA_APP_ICONS = [
 ]
 ```
 
+All settings are optional, and the app will work fine with its internal defaults.  Highly recommend setting at least `PWA_APP_NAME` and `PWA_APP_DESCRIPTION`.
+
 Add the progressive web app URLs to urls.py:
 ```python
 from django.conf.urls import url, include
