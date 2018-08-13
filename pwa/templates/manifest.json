@@ -5,7 +5,7 @@
   "description": {{ PWA_APP_DESCRIPTION|js }},
   "start_url": {{ PWA_APP_START_URL|js }},
   "display": {{ PWA_APP_DISPLAY|js }},
-  "background_color": "#fff",
+  "background_color": {{ PWA_APP_BACKGROUND_COLOR|js }},
   "theme_color": {{ PWA_APP_THEME_COLOR|js }},
   "icons": {{ PWA_APP_ICONS|js }}
 }
