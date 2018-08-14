@@ -7,5 +7,7 @@
   "display": {{ PWA_APP_DISPLAY|js }},
   "background_color": {{ PWA_APP_BACKGROUND_COLOR|js }},
   "theme_color": {{ PWA_APP_THEME_COLOR|js }},
-  "icons": {{ PWA_APP_ICONS|js }}
+  "icons": {{ PWA_APP_ICONS|js }},
+  "dir": {{ PWA_APP_DIR|js }},
+  "lang": {{ PWA_APP_LANG|js }}
 }

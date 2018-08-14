@@ -20,5 +20,7 @@ PWA_APP_ICONS = getattr(settings, 'PWA_APP_ICONS', [
         'sizes': '160x160'
     }
 ])
+PWA_APP_DIR = getattr(settings, 'PWA_APP_DIR', 'auto')
+PWA_APP_LANG = getattr(settings, 'PWA_APP_LANG', 'en-US')
 
 
