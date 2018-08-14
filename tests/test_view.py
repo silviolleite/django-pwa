@@ -34,6 +34,8 @@ class ManifestTest(TestCase):
             '"background_color":',
             '"theme_color":',
             '"icons":',
+            '"dir":',
+            '"lang":'
         ]
         for expected in contents:
             with self.subTest():
