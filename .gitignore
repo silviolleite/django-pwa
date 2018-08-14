@@ -5,3 +5,4 @@
 build/
 dist/
 django_progressive_web_app.egg-info/
+.tox/
