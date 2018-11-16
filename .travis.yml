@@ -1,18 +1,25 @@
 language: python
+dist: trusty
+sudo: required
+group: edge
 python:
   - "3.6"
 env:
   - DJANGO_VERSION=2.0
   global:
-      - CC_TEST_REPORTER_ID=995f11c260357b16b3ead412d8d8466d1609384bcfa38827453d469cc5406865
+    - CC_TEST_REPORTER_ID=995f11c260357b16b3ead412d8d8466d1609384bcfa38827453d469cc5406865
 install:
   - pip install Django==$DJANGO_VERSION
   - pip install tox-travis
   - pip install -q -r requirements-dev.txt
-before_script:
+  - pip install coverage
+before_script:  # code coverage tool
   - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
-script: tox
+script:
+  - tox
+  - coverage run runtests.py --source="pwa" -v 2
 after_script:
-  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+  - coverage xml
+  - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_PYTHON_VERSION" == "3.6" ]]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
