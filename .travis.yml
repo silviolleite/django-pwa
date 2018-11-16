@@ -3,8 +3,16 @@ python:
   - "3.6"
 env:
   - DJANGO_VERSION=2.0
+  global:
+      - CC_TEST_REPORTER_ID=995f11c260357b16b3ead412d8d8466d1609384bcfa38827453d469cc5406865
 install:
   - pip install Django==$DJANGO_VERSION
   - pip install tox-travis
   - pip install -q -r requirements-dev.txt
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script: tox
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

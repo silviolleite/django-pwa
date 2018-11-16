@@ -1,5 +1,6 @@
 django-pwa
 =====
+[![Build Status](https://travis-ci.org/silviolleite/django-pwa.svg)](https://travis-ci.org/silviolleite/django-pwa)
 This Django app turns your project into a [progressive web app](https://developers.google.com/web/progressive-web-apps/).  Navigating to your site on an Android phone will prompt you to add the app to your home screen.
 
 ![Prompt for install](https://github.com/silviolleite/django-pwa/raw/master/images/screenshot1.png)
