@@ -17,16 +17,16 @@ except:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
-    name='django-progressive-web-app',
-    version='0.1.1',
+    name='django-pwa',
+    version='1.0.0',
     packages=find_packages(),
     include_package_data=True,
     license='MIT License',
     description=short_description,
     long_description=long_description,
-    url='http://github.com/svvitale/django-progressive-web-app',
-    author='Scott Vitale',
-    author_email='svvitale@gmail.com',
+    url='http://github.com/silviolleite/django-pwa',
+    author='Silvio Luis',
+    author_email='silviolleite@gmail.com',
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
@@ -39,6 +39,7 @@ setup(
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],

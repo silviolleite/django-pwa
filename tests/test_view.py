@@ -33,6 +33,7 @@ class ManifestTest(TestCase):
             '"display":',
             '"background_color":',
             '"theme_color":',
+            '"orientation":',
             '"icons":',
             '"dir":',
             '"lang":'
