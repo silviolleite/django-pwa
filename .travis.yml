@@ -20,4 +20,5 @@ script:
   - coverage run runtests.py --source=pwa -v 2
 after_script:
   - coverage xml
-  - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_PYTHON_VERSION" == "3.6" ]]; then ./cc-test-reporter format-coverage --prefix /home/travis/build/silviolleite/django-pwa/ after-build --exit-code $TRAVIS_TEST_RESULT; fi
+  - ./cc-test-reporter format-coverage --prefix /home/travis/build/silviolleite/django-pwa/
+  - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_PYTHON_VERSION" == "3.6" ]]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
