@@ -4,8 +4,6 @@ python:
   - "3.6"
 env:
   - DJANGO_VERSION=2.0
-  global:
-    - CC_TEST_REPORTER_ID=6c015c866a94cfb5b7a046e9a0725a6a02224b1023eeef9ea2db63426beb3fd3
 install:
   - pip install Django==$DJANGO_VERSION
   - pip install tox-travis
