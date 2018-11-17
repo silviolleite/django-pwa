@@ -1,7 +1,4 @@
 language: python
-dist: trusty
-sudo: required
-group: edge
 python:
   - "3.6"
 env:
@@ -11,12 +8,8 @@ install:
   - pip install tox-travis
   - pip install -q -r requirements-dev.txt
   - pip install coverage
-before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+  - pip install codecov
 script:
-  - coverage run runtests.py --source=pwa -v 2
-after_script:
-  - coverage xml
-  - if [[ "$TRAVIS_PULL_REQUEST" == "false" && "$TRAVIS_PYTHON_VERSION" == "3.6" ]]; then ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT; fi
+  - coverage run runtests.py
+after_success:
+  - codecov
