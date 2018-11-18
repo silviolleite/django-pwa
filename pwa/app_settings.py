@@ -1,4 +1,4 @@
-""" Settings required by django-progressive-web-app. """
+""" Settings required by django-app. """
 from django.conf import settings
 import os
 

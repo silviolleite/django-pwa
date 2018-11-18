@@ -9,4 +9,5 @@
  - Unit tests
  - Add Oritentation on manifest.json
  - Add tox
+ - Add Coverage
  
