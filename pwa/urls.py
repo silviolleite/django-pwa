@@ -1,8 +1,10 @@
-from django.conf.urls import url
-from .views import manifest, service_worker
+from django.urls import path
+
+from .views import Manifest, ServiceWorker, OfflineView
 
 # Serve up serviceworker.js and manifest.json at the root
 urlpatterns = [
-    url('^serviceworker.js$', service_worker, name="serviceworker"),
-    url('^manifest.json$', manifest, name="manifest")
+    path('serviceworker.js', ServiceWorker.as_view(), name='serviceworker'),
+    path('manifest.json', Manifest.as_view(), name='manifest'),
+    path('offline', OfflineView.as_view(), name='offline')
 ]

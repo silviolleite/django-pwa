@@ -10,16 +10,21 @@ try:
     import pypandoc
 
     long_description = pypandoc.convert('README.md', 'rst')
-except:
+except RuntimeError:
     long_description = short_description
 
 # allow setup.py to be run from any path
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
+install_requirements = [
+    "django>=2",
+]
+
 setup(
     name='django-pwa',
-    version='1.0.0',
+    version='1.0.1',
     packages=find_packages(),
+    install_requires=install_requirements,
     include_package_data=True,
     license='MIT License',
     description=short_description,
@@ -30,7 +35,8 @@ setup(
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
-        'Framework :: Django :: 1.10',
+        'Framework :: Django :: 2.0',
+        'Framework :: Django :: 2.1',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',

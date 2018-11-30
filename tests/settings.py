@@ -34,3 +34,5 @@ DATABASES = {
         'NAME': 'mydatabase',
     }
 }
+
+STATIC_URL = '/static/'

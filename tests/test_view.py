@@ -41,3 +41,13 @@ class ManifestTest(TestCase):
         for expected in contents:
             with self.subTest():
                 self.assertContains(self.response, expected)
+
+
+class OfflineTest(TestCase):
+    def setUp(self):
+        self.response = self.client.get(r('offline'))
+
+    def test_get(self):
+        """GET /offline Should return status code 200"""
+        self.assertEqual(200, self.response.status_code)
+

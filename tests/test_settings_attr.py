@@ -15,6 +15,7 @@ class AppSettingsTest(TestCase):
             'PWA_APP_DISPLAY',
             'PWA_APP_ORIENTATION',
             'PWA_APP_START_URL',
+            'PWA_APP_FETCH_URL',
             'PWA_APP_ICONS',
             'PWA_APP_DIR',
             'PWA_APP_LANG'

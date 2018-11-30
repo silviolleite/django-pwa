@@ -1,2 +1,3 @@
 include *.md
 recursive-include pwa/templates *
+recursive-include pwa/static *
