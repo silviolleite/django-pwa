@@ -3,7 +3,7 @@ django-pwa
 [![Build Status](https://travis-ci.org/silviolleite/django-pwa.svg)](https://travis-ci.org/silviolleite/django-pwa)
 [![Maintainability](https://api.codeclimate.com/v1/badges/246542ea921058c4f76f/maintainability)](https://codeclimate.com/github/silviolleite/django-pwa/maintainability)
 [![codecov](https://codecov.io/gh/silviolleite/django-pwa/branch/master/graph/badge.svg)](https://codecov.io/gh/silviolleite/django-pwa) 
-[![PyPI - Downloads](https://img.shields.io/pypi/dd/django-pwa.svg)](https://pypi.org/project/django-pwa/)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/django-pwa.svg)](https://pypi.org/project/django-pwa/)
 [![PyPI - Downloads](https://img.shields.io/pypi/v/django-pwa.svg)](https://pypi.org/project/django-pwa)
 
 This Django app turns your project into a [progressive web app](https://developers.google.com/web/progressive-web-apps/).  Navigating to your site on an Android phone will prompt you to add the app to your home screen.
