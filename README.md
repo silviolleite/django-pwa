@@ -36,8 +36,9 @@ INSTALLED_APPS = [
 ]
 ```
 
-Configure your app name, description, and icons in settings.py:
+Configure your app name, description, icons and splash screen images in settings.py:
 ```python
+
 PWA_APP_NAME = 'My App'
 PWA_APP_DESCRIPTION = "My app description"
 PWA_APP_THEME_COLOR = '#0A0302'
@@ -51,12 +52,18 @@ PWA_APP_ICONS = [
         'sizes': '160x160'
     }
 ]
+PWA_APP_SPLASH_SCREEN = [
+    {
+        'src': '/static/images/icons/splash-640x1136.png',
+        'media': '(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)'
+    }
+]
 PWA_APP_DIR = 'ltr'
 PWA_APP_LANG = 'en-US'
 
 ```
 
-All settings are optional, and the app will work fine with its internal defaults.  Highly recommend setting at least `PWA_APP_NAME` and `PWA_APP_DESCRIPTION`.
+All settings are optional, and the app will work fine with its internal defaults.  Highly recommend setting at least `PWA_APP_NAME`, `PWA_APP_DESCRIPTION`, `PWA_APP_ICONS` and `PWA_APP_SPLASH_SCREEN`.
 
 Add the progressive web app URLs to urls.py:
 ```python
@@ -109,6 +116,16 @@ var filesToCache = [
     '/images/icons/icon-192x192.png',
     '/images/icons/icon-384x384.png',
     '/images/icons/icon-512x512.png',
+    '/static/images/icons/splash-640x1136.png',
+    '/static/images/icons/splash-750x1334.png',
+    '/static/images/icons/splash-1242x2208.png',
+    '/static/images/icons/splash-1125x2436.png',
+    '/static/images/icons/splash-828x1792.png',
+    '/static/images/icons/splash-1242x2688.png',
+    '/static/images/icons/splash-1536x2048.png',
+    '/static/images/icons/splash-1668x2224.png',
+    '/static/images/icons/splash-1668x2388.png',
+    '/static/images/icons/splash-2048x2732.png'
 ];
 
 // Cache on install
@@ -152,7 +169,7 @@ self.addEventListener("fetch", event => {
 
 Adding Your Own Service Worker
 =====
-By default, the service worker implemented by this app is empty.  To add service worker functionality, you'll want to create a `serviceworker.js` or similarly named template in a template directory, and then point at it using the PWA_SERVICE_WORKER_PATH variable (PWA_APP_FETCH_URL is passed through).
+To add service worker functionality, you'll want to create a `serviceworker.js` or similarly named template in a template directory, and then point at it using the PWA_SERVICE_WORKER_PATH variable (PWA_APP_FETCH_URL is passed through).
 
 ```python
 PWA_SERVICE_WORKER_PATH = 'my_app/serviceworker.js'

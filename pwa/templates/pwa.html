@@ -1,27 +1,48 @@
 <!-- Path to manifest.json -->
 <link rel="manifest" href="/manifest.json">
 
-<!-- Icons for Apple Devices -->
-{% for icon in PWA_APP_ICONS %}
-    <link rel="apple-touch-icon" href="{{ icon.src }}" sizes="{{ icon.sizes }}">
-{% endfor %}
+<!-- Add to homescreen for Chrome on Android -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="{{ PWA_APP_NAME }}">
 
+
+<!-- Chrome for Android theme color -->
 <meta name="theme-color" content="{{ PWA_APP_THEME_COLOR }}">
+
+<!-- Add to homescreen for Safari on iOS -->
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="{{ PWA_APP_NAME }}">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
+{% for icon in PWA_APP_ICONS %}
+<link rel="apple-touch-icon" href="{{ icon.src }}" sizes="{{ icon.size }}">
+{% endfor %}
+
+
+{% for splash in PWA_APP_SPLASH_SCREEN%}
+<link href="{{ splash.src }}" media="{{ splash.media }}" rel="apple-touch-startup-image"/>
+{% endfor %}
+
+
+<!-- Tile for Win8 -->
+<meta name="msapplication-TileColor" content="{{ PWA_APP_BACKGROUND_COLOR }}">
+{% with PWA_APP_ICONS|last as icon %}
+<meta name="msapplication-TileImage" content="{{ icon.src }}">
+
+
+<link rel="icon" sizes="{{ icon.size }}" href="{{ icon.src }}">
+{% endwith %}
 
 <script type="text/javascript">
     // Initialize the service worker
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/serviceworker.js', {
-            scope: '.' // <--- THIS BIT IS REQUIRED
+            scope: '.'
         }).then(function (registration) {
             // Registration was successful
-            console.log('django-progressive-web-app: ServiceWorker registration successful with scope: ', registration.scope);
+            console.log('django-pwa: ServiceWorker registration successful with scope: ', registration.scope);
         }, function (err) {
             // registration failed :(
-            console.log('django-progressive-web-app: ServiceWorker registration failed: ', err);
+            console.log('django-pwa: ServiceWorker registration failed: ', err);
         });
     }
 </script>
