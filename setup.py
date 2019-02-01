@@ -17,12 +17,12 @@ except RuntimeError:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 install_requirements = [
-    "django>=2",
+    "django>=1.8",
 ]
 
 setup(
     name='django-pwa',
-    version='1.0.2',
+    version='1.0.3',
     packages=find_packages(),
     install_requires=install_requirements,
     include_package_data=True,
@@ -35,6 +35,10 @@ setup(
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
+        'Framework :: Django :: 1.8',
+        'Framework :: Django :: 1.9',
+        'Framework :: Django :: 1.10',
+        'Framework :: Django :: 1.11',
         'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.1',
         'Intended Audience :: Developers',

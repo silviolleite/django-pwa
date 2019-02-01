@@ -5,6 +5,7 @@ django-pwa
 [![codecov](https://codecov.io/gh/silviolleite/django-pwa/branch/master/graph/badge.svg)](https://codecov.io/gh/silviolleite/django-pwa) 
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/django-pwa.svg)](https://pypi.org/project/django-pwa/)
 [![PyPI - Downloads](https://img.shields.io/pypi/v/django-pwa.svg)](https://pypi.org/project/django-pwa)
+[![PyPI - Downloads](https://img.shields.io/pypi/djversions/django-pwa.svg)](https://pypi.org/project/django-pwa)
 
 This Django app turns your project into a [progressive web app](https://developers.google.com/web/progressive-web-apps/).  Navigating to your site on an Android phone will prompt you to add the app to your home screen.
 
@@ -67,11 +68,11 @@ All settings are optional, and the app will work fine with its internal defaults
 
 Add the progressive web app URLs to urls.py:
 ```python
-from django.urls import path, include
+from django.urls import url, include
 
 urlpatterns = [
     ...
-    path('', include('pwa.urls')),  # You MUST use an empty string as the URL prefix
+    url('', include('pwa.urls')),  # You MUST use an empty string as the URL prefix
     ...
 ]
 ```
@@ -172,7 +173,7 @@ Adding Your Own Service Worker
 To add service worker functionality, you'll want to create a `serviceworker.js` or similarly named template in a template directory, and then point at it using the PWA_SERVICE_WORKER_PATH variable (PWA_APP_FETCH_URL is passed through).
 
 ```python
-PWA_SERVICE_WORKER_PATH = 'my_app/serviceworker.js'
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'my_app', 'serviceworker.js')
 
 ```
 
