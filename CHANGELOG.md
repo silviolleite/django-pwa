@@ -42,4 +42,14 @@
  ### Changed
   - Update `CHANGELOG.md`
   - Update `README.md`
+  
+ ## 1.0.3
+ 
+ ### Fixed
+ - Restored support to oldest Django versions
+ 
+ ## 1.0.4
+  
+  ### Fixed
+  - Fix problem of multiple service workers being registered over multiple URLs
  
