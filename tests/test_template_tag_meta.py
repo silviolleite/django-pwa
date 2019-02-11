@@ -53,7 +53,7 @@ class CreateMetaTemplateTagTest(TestCase):
             '<script type="text/javascript">',
             "if ('serviceWorker' in navigator) {",
             "navigator.serviceWorker.register('/serviceworker.js', {",
-            "scope: '.'",
+            "scope: '/'",
             "}).then(function (registration) {",
             "console.log('django-pwa: ServiceWorker registration successful with scope: ', registration.scope);",
             "}, function (err) {",
