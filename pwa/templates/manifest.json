@@ -4,6 +4,7 @@
   "short_name": {{ PWA_APP_NAME|js }},
   "description": {{ PWA_APP_DESCRIPTION|js }},
   "start_url": {{ PWA_APP_START_URL|js }},
+  "scope": {{ PWA_AA_SCOPE|js }},
   "display": {{ PWA_APP_DISPLAY|js }},
   "orientation": {{ PWA_APP_ORIENTATION|js }},
   "background_color": {{ PWA_APP_BACKGROUND_COLOR|js }},
