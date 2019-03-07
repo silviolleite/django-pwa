@@ -12,6 +12,7 @@ class AppSettingsTest(TestCase):
             'PWA_APP_ROOT_URL',
             'PWA_APP_THEME_COLOR',
             'PWA_APP_BACKGROUND_COLOR',
+            'PWA_APP_SCOPE',
             'PWA_APP_DISPLAY',
             'PWA_APP_ORIENTATION',
             'PWA_APP_START_URL',

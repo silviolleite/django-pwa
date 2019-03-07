@@ -36,7 +36,7 @@
     // Initialize the service worker
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/serviceworker.js', {
-            scope: '/'
+            scope: '{{ PWA_APP_SCOPE }}'
         }).then(function (registration) {
             // Registration was successful
             console.log('django-pwa: ServiceWorker registration successful with scope: ', registration.scope);

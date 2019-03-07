@@ -52,4 +52,10 @@
   
   ### Fixed
   - Fix problem of multiple service workers being registered over multiple URLs
+  
+ ## 1.0.5
+  
+  ### Added
+  - Updated manifest.json by adding scope parameter.
+  - Updated serviceworker.js add scope dynamic parameter
  

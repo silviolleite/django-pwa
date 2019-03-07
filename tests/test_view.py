@@ -31,6 +31,7 @@ class ManifestTest(TestCase):
             '"description":',
             '"start_url":',
             '"display":',
+            '"scope":',
             '"background_color":',
             '"theme_color":',
             '"orientation":',
