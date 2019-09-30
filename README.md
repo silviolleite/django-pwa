@@ -36,6 +36,12 @@ INSTALLED_APPS = [
     ...
 ]
 ```
+Define STATICFILES_DIRS for your custom PWA_APP_ICONS
+```python
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+```
 
 Configure your app name, description, icons and splash screen images in settings.py:
 ```python
