@@ -10,7 +10,7 @@ try:
     import pypandoc
 
     long_description = pypandoc.convert('README.md', 'rst')
-except RuntimeError:
+except ModuleNotFoundError:
     long_description = short_description
 
 # allow setup.py to be run from any path
