@@ -22,13 +22,14 @@ install_requirements = [
 
 setup(
     name='django-pwa',
-    version='1.0.5',
+    version='1.0.6',
     packages=find_packages(),
     install_requires=install_requirements,
     include_package_data=True,
     license='MIT License',
     description=short_description,
     long_description=long_description,
+    long_description_content_type="text/markdown",
     url='http://github.com/silviolleite/django-pwa',
     author='Silvio Luis',
     author_email='silviolleite@gmail.com',
@@ -41,6 +42,7 @@ setup(
         'Framework :: Django :: 1.11',
         'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.1',
+        'Framework :: Django :: 3.0',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
