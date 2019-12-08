@@ -70,6 +70,8 @@ PWA_APP_DIR = 'ltr'
 PWA_APP_LANG = 'en-US'
 
 ```
+#### Show console.log
+Set the `PWA_APP_DEBUG_MODE = False` to disable the the `console.log` on browser. 
 
 All settings are optional, and the app will work fine with its internal defaults.  Highly recommend setting at least `PWA_APP_NAME`, `PWA_APP_DESCRIPTION`, `PWA_APP_ICONS` and `PWA_APP_SPLASH_SCREEN`.
 
