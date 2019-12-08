@@ -39,10 +39,14 @@
             scope: '{{ PWA_APP_SCOPE }}'
         }).then(function (registration) {
             // Registration was successful
+            {% if PWA_APP_DEBUG_MODE %}
             console.log('django-pwa: ServiceWorker registration successful with scope: ', registration.scope);
+            {% endif %}
         }, function (err) {
             // registration failed :(
+            {% if PWA_APP_DEBUG_MODE %}
             console.log('django-pwa: ServiceWorker registration failed: ', err);
+            {% endif %}
         });
     }
 </script>
