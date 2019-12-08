@@ -7,3 +7,4 @@ dist/
 *.egg-info/
 .tox/
 .coverage
+.DS_Store
