@@ -60,6 +60,12 @@ PWA_APP_ICONS = [
         'sizes': '160x160'
     }
 ]
+PWA_APP_ICONS_APPLE = [
+    {
+        'src': '/static/images/my_apple_icon.png',
+        'sizes': '160x160'
+    }
+]
 PWA_APP_SPLASH_SCREEN = [
     {
         'src': '/static/images/icons/splash-640x1136.png',
