@@ -58,4 +58,10 @@
   ### Added
   - Updated manifest.json by adding scope parameter.
   - Updated serviceworker.js add scope dynamic parameter
- 
+
+ ## 1.0.7
+
+  ### Fixed
+  - Fix PWA if app is not mounted in root of webserver
+  ### Added
+  - Allow use of view names in PWA_APP_SCOPE, PWA_START_URL, PWA_APP_FETCH_URL and PWA_APP_ROOT
