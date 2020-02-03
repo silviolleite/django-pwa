@@ -2,7 +2,11 @@
 from django.conf import settings
 from django.shortcuts import resolve_url
 from django.urls import get_script_prefix
+from django.utils.functional import lazy
 import os
+
+# Lazy-evaluate URLs so including pwa.urls in root urlconf works
+resolve_url = lazy(resolve_url, str)
 
 # Get script prefix for apps not mounted under /
 _PWA_SCRIPT_PREFIX = get_script_prefix()
