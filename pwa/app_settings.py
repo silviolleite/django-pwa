@@ -27,6 +27,7 @@ PWA_APP_DEBUG_MODE = getattr(settings, 'PWA_APP_DEBUG_MODE', True)
 PWA_APP_ORIENTATION = getattr(settings, 'PWA_APP_ORIENTATION', 'any')
 PWA_APP_START_URL = resolve_url(getattr(settings, 'PWA_APP_START_URL', _PWA_SCRIPT_PREFIX))
 PWA_APP_FETCH_URL = resolve_url(getattr(settings, 'PWA_APP_FETCH_URL', _PWA_SCRIPT_PREFIX))
+PWA_APP_STATUS_BAR_COLOR = getattr(settings, 'PWA_APP_STATUS_BAR_COLOR', 'default')
 PWA_APP_ICONS = getattr(settings, 'PWA_APP_ICONS', [
     {
         'src': '/static/images/icons/icon-72x72.png',
