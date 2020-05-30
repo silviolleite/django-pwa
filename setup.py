@@ -22,7 +22,7 @@ install_requirements = [
 
 setup(
     name='django-pwa',
-    version='1.0.8',
+    version='1.0.9',
     packages=find_packages(),
     install_requires=install_requirements,
     include_package_data=True,
