@@ -19,6 +19,10 @@ class ManifestTest(TestCase):
         """GET /manifest.json Should return status code 200"""
         self.assertEqual(self.response.status_code, 200)
 
+    def test_content_type_json(self):
+        """The content type Must be JSON"""
+        self.assertEqual(self.response['content-type'], 'application/json')
+
     def test_template(self):
         """Must have the template manifest.json"""
         self.assertTemplateUsed(self.response, 'manifest.json')
