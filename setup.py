@@ -4,9 +4,7 @@ from setuptools import find_packages, setup
 short_description = 'A Django app to include a manifest.json and Service Worker instance to enable progressive web ' \
                     'app behavior '
 
-# noinspection PyBroadException
 try:
-    # noinspection PyPackageRequirements
     import pypandoc
 
     long_description = pypandoc.convert('README.md', 'rst')
@@ -22,7 +20,7 @@ install_requirements = [
 
 setup(
     name='django-pwa',
-    version='1.0.9',
+    version='1.0.10',
     packages=find_packages(),
     install_requires=install_requirements,
     include_package_data=True,
