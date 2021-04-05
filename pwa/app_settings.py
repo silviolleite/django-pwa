@@ -31,35 +31,35 @@ PWA_APP_STATUS_BAR_COLOR = getattr(settings, 'PWA_APP_STATUS_BAR_COLOR', 'defaul
 PWA_APP_ICONS = getattr(settings, 'PWA_APP_ICONS', [
     {
         'src': '/static/images/icons/icon-72x72.png',
-        'size': '72x72'
+        'sizes': '72x72'
     },
     {
         'src': '/static/images/icons/icon-96x96.png',
-        'size': '96x96'
+        'sizes': '96x96'
     },
     {
         'src': '/static/images/icons/icon-128x128.png',
-        'size': '128x128'
+        'sizes': '128x128'
     },
     {
         'src': '/static/images/icons/icon-144x144.png',
-        'size': '144x144'
+        'sizes': '144x144'
     },
     {
         'src': '/static/images/icons/icon-152x152.png',
-        'size': '152x152'
+        'sizes': '152x152'
     },
     {
         'src': '/static/images/icons/icon-192x192.png',
-        'size': '192x192'
+        'sizes': '192x192'
     },
     {
         'src': '/static/images/icons/icon-384x384.png',
-        'size': '384x384'
+        'sizes': '384x384'
     },
     {
         'src': '/static/images/icons/icon-512x512.png',
-        'size': '512x512'
+        'sizes': '512x512'
     }
 ])
 PWA_APP_SPLASH_SCREEN = getattr(settings, 'PWA_APP_SPLASH_SCREEN', [

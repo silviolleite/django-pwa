@@ -16,11 +16,11 @@
 
 {% if PWA_APP_ICONS_APPLE %}
     {% for icon in PWA_APP_ICONS_APPLE %}
-        <link rel="apple-touch-icon" href="{{ icon.src }}" sizes="{{ icon.size }}">
+        <link rel="apple-touch-icon" href="{{ icon.src }}" sizes="{{ icon.sizes }}">
     {% endfor %}
 {% else %}
     {% for icon in PWA_APP_ICONS %}
-        <link rel="apple-touch-icon" href="{{ icon.src }}" sizes="{{ icon.size }}">
+        <link rel="apple-touch-icon" href="{{ icon.src }}" sizes="{{ icon.sizes }}">
     {% endfor %}
 {% endif %}
 
@@ -36,7 +36,7 @@
 <meta name="msapplication-TileImage" content="{{ icon.src }}">
 
 
-<link rel="icon" sizes="{{ icon.size }}" href="{{ icon.src }}">
+<link rel="icon" sizes="{{ icon.sizes }}" href="{{ icon.src }}">
 {% endwith %}
 
 <script type="text/javascript">
