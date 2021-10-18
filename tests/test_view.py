@@ -28,7 +28,7 @@ class ManifestTest(TestCase):
         self.assertTemplateUsed(self.response, 'manifest.json')
 
     def test_manifest_contains(self):
-        """Must be the attributes to manitesf.json"""
+        """Must be the attributes to manifest.json"""
         contents = [
             '"name":',
             '"short_name":',
@@ -42,7 +42,8 @@ class ManifestTest(TestCase):
             '"icons":',
             '"dir":',
             '"lang":',
-            '"status_bar":'
+            '"status_bar":',
+            '"screenshots" :'
         ]
         for expected in contents:
             with self.subTest():
