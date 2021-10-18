@@ -20,7 +20,8 @@ class AppSettingsTest(TestCase):
             'PWA_APP_ICONS',
             'PWA_APP_DIR',
             'PWA_APP_LANG',
-            'PWA_APP_STATUS_BAR_COLOR'
+            'PWA_APP_STATUS_BAR_COLOR',
+            'PWA_APP_SCREENSHOTS'
         ]
         for attr in attributes:
             with self.subTest():
