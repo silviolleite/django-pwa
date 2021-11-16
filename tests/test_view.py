@@ -43,7 +43,8 @@ class ManifestTest(TestCase):
             '"dir":',
             '"lang":',
             '"status_bar":',
-            '"screenshots" :'
+            '"screenshots" :',
+            '"shortcuts" :'
         ]
         for expected in contents:
             with self.subTest():

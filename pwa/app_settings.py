@@ -114,3 +114,10 @@ PWA_APP_SCREENSHOTS = getattr(settings, 'PWA_APP_SCREENSHOTS', [
       "type": "image/png"
     }
   ])
+PWA_APP_SHORTCUTS = getattr(settings, "PWA_APP_SHORTCUTS", [
+    {
+        'name': 'Home',
+        'url': '/',
+        'description': 'Startpage of the application'
+    }
+])
