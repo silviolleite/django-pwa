@@ -43,7 +43,7 @@ STATICFILES_DIRS = [
 ]
 ```
 
-Configure your app name, description, icons and splash screen images in settings.py:
+Configure your app name, description, icons, splash screen images, screenshots and shortcuts in settings.py:
 ```python
 
 PWA_APP_NAME = 'My App'
@@ -75,12 +75,27 @@ PWA_APP_SPLASH_SCREEN = [
 ]
 PWA_APP_DIR = 'ltr'
 PWA_APP_LANG = 'en-US'
+PWA_APP_SHORTCUTS = [
+    {
+        'name': 'Shortcut',
+        'url': '/target',
+        'description': 'Shortcut to a page in my application'
+    }
+]
+PWA_APP_SCREENSHOTS = [
+    {
+      'src': '/static/images/icons/splash-750x1334.png',
+      'sizes': '750x1334',
+      "type": "image/png"
+    }
+]
 
 ```
 #### Show console.log
 Set the `PWA_APP_DEBUG_MODE = False` to disable the the `console.log` on browser. 
 
 All settings are optional, and the app will work fine with its internal defaults.  Highly recommend setting at least `PWA_APP_NAME`, `PWA_APP_DESCRIPTION`, `PWA_APP_ICONS` and `PWA_APP_SPLASH_SCREEN`.
+In order to not use one of the internal defaults, a setting can be set to an empty string or list, whichever one is applicable.
 
 Add the progressive web app URLs to urls.py:
 ```python
@@ -109,10 +124,10 @@ Troubleshooting
 While running the Django test server:
 
 1. Verify that `/manifest.json` is being served
-1. Verify that `/serviceworker.js` is being served
-1. Verify that `/offline` is being served
-1. Use the Application tab in the Chrome Developer Tools to verify the progressive web app is configured correctly.
-1. Use the "Add to homescreen" link on the Application Tab to verify you can add the app successfully.
+2. Verify that `/serviceworker.js` is being served
+3. Verify that `/offline` is being served
+4. Use the Application tab in the Chrome Developer Tools to verify the progressive web app is configured correctly.
+5. Use the "Add to homescreen" link on the Application Tab to verify you can add the app successfully.
 
 
 The Service Worker

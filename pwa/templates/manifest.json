@@ -13,5 +13,6 @@
   "icons": {{ PWA_APP_ICONS|js }},
   "dir": {{ PWA_APP_DIR|js }},
   "lang": {{ PWA_APP_LANG|js }},
-  "screenshots" : {{PWA_APP_SCREENSHOTS|js }}
+  "screenshots" : {{PWA_APP_SCREENSHOTS|js }},
+  "shortcuts" : {{PWA_APP_SHORTCUTS|js }}
 }
