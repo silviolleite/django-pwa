@@ -21,7 +21,7 @@ install_requirements = [
 setup(
     name='django-pwa',
     version='1.0.10',
-    packages=find_packages(),
+    packages=find_packages(exclude=("tests",)),
     install_requires=install_requirements,
     include_package_data=True,
     license='MIT License',
