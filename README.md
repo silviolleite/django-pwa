@@ -192,8 +192,7 @@ To add service worker and manifest functionality, you'll want to create a `servi
 ```python
 PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'my_app', 'serviceworker.js')
 
-PWA_MANIFEST_PATH = os.path.join(BASE_DIR, 'my_app',
-'manifest.json')
+PWA_MANIFEST_PATH = os.path.join(BASE_DIR, 'my_app','manifest.json')
 
 ```
 
