@@ -47,6 +47,7 @@ Configure your app name, description, icons and splash screen images in settings
 ```python
 
 PWA_APP_NAME = 'My App'
+PWA_APP_SHORT_NAME = 'My App Short Name'
 PWA_APP_DESCRIPTION = "My app description"
 PWA_APP_THEME_COLOR = '#0A0302'
 PWA_APP_BACKGROUND_COLOR = '#ffffff'
@@ -58,13 +59,13 @@ PWA_APP_STATUS_BAR_COLOR = 'default'
 PWA_APP_ICONS = [
     {
         'src': '/static/images/my_app_icon.png',
-        'sizes': '160x160'
+        'size': '160x160'
     }
 ]
 PWA_APP_ICONS_APPLE = [
     {
         'src': '/static/images/my_apple_icon.png',
-        'sizes': '160x160'
+        'size': '160x160'
     }
 ]
 PWA_APP_SPLASH_SCREEN = [
@@ -186,10 +187,13 @@ self.addEventListener("fetch", event => {
 
 Adding Your Own Service Worker
 =====
-To add service worker functionality, you'll want to create a `serviceworker.js` or similarly named template in a template directory, and then point at it using the PWA_SERVICE_WORKER_PATH variable (PWA_APP_FETCH_URL is passed through).
+To add service worker and manifest functionality, you'll want to create a `serviceworker.js` and `manifest.json` respectively or similarly named template in a template directory, and then point at it using the PWA_SERVICE_WORKER_PATH and PWA_MANIFEST_PATH variable (PWA_APP_FETCH_URL is passed through).
 
 ```python
 PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'my_app', 'serviceworker.js')
+
+PWA_MANIFEST_PATH = os.path.join(BASE_DIR, 'my_app',
+'manifest.json')
 
 ```
 
