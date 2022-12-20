@@ -11,24 +11,24 @@
  - Option `Oritentation` on manifest.json
  - tox.ini
  - Coverage
- 
- 
+
+
  ## 1.0.1
- 
+
  ### Added
  - Add django 2 requirement
  - Use templateviews instead of own implementations
  - Add content_types
  - Update `README.md`
- - Add `PWA_APP_FETCH_URL` 
+ - Add `PWA_APP_FETCH_URL`
  - Add default_config in `__init__.py`
  - Add basic serviceworker
  - Add default offline page and default icons
  ### Changed
  - Updated the unit tests
- 
+
  ## 1.0.2
- 
+
  ### Fixed
  - Fix tox.ini to install pypandoc
  ### Added
@@ -42,19 +42,19 @@
  ### Changed
   - Update `CHANGELOG.md`
   - Update `README.md`
-  
+
  ## 1.0.3
- 
+
  ### Fixed
  - Restored support to oldest Django versions
- 
+
  ## 1.0.4
-  
+
   ### Fixed
   - Fix problem of multiple service workers being registered over multiple URLs
-  
+
  ## 1.0.5
-  
+
   ### Added
   - Updated manifest.json by adding scope parameter.
   - Updated serviceworker.js add scope dynamic parameter
@@ -65,3 +65,10 @@
   - Fix PWA if app is not mounted in root of webserver
   ### Added
   - Allow use of view names in PWA_APP_SCOPE, PWA_START_URL, PWA_APP_FETCH_URL and PWA_APP_ROOT
+
+## 1.1.0
+
+  ### Added
+  - Support for Django 4.0+
+  ### Removed
+  - Drop support for Django 1.8

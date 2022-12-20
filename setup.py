@@ -1,4 +1,5 @@
 import os
+
 from setuptools import find_packages, setup
 
 short_description = 'A Django app to include a manifest.json and Service Worker instance to enable progressive web ' \
@@ -15,12 +16,12 @@ except ModuleNotFoundError:
 os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 install_requirements = [
-    "django>=1.8",
+    "django>=2.0",
 ]
 
 setup(
     name='django-pwa',
-    version='1.0.10',
+    version='1.1.0',
     packages=find_packages(),
     install_requires=install_requirements,
     include_package_data=True,
@@ -34,13 +35,16 @@ setup(
     classifiers=[
         'Environment :: Web Environment',
         'Framework :: Django',
-        'Framework :: Django :: 1.8',
         'Framework :: Django :: 1.9',
         'Framework :: Django :: 1.10',
         'Framework :: Django :: 1.11',
         'Framework :: Django :: 2.0',
         'Framework :: Django :: 2.1',
         'Framework :: Django :: 3.0',
+        'Framework :: Django :: 3.1',
+        'Framework :: Django :: 3.2',
+        'Framework :: Django :: 4.0',
+        'Framework :: Django :: 4.1',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
