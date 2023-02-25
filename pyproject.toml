@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "django-pwa"
+version = "1.1.0"
+description = "A Django app to include a manifest.json and Service Worker instance to enable progressive web app behavior"
+license = "MIT"
+authors = ["Silvio Luis <silviolleite@gmail.com>"]
+maintainers = ["Christian Hartung <hartungstenio@oulook.com>"]
+readme = "README.md"
+repository = "https://github.com/silviolleite/django-pwa"
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 2.0",
+    "Framework :: Django :: 2.1",
+    "Framework :: Django :: 3.0",
+    "Framework :: Django :: 3.1",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.0",
+    "Framework :: Django :: 4.1",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
+packages = [{ include = "pwa" }]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+django = ">=2.0"
+
+[tool.poetry.group.dev.dependencies]
+tox = "^4.4.6"
+
+[tool.poetry.group.docs.dependencies]
+pypandoc = "^1.10"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
