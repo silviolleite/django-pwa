@@ -72,3 +72,8 @@
   - Support for Django 4.0+
   ### Removed
   - Drop support for Django 1.8
+
+## UNRELEASED
+
+  ### Build
+  - add poetry support
