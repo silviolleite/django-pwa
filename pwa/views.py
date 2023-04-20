@@ -1,12 +1,41 @@
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import render, resolve_url
 
 from . import app_settings
 
 
 def service_worker(request):
-    response = HttpResponse(open(app_settings.PWA_SERVICE_WORKER_PATH).read(), content_type='application/javascript')
-    return response
+    try:
+        if app_settings.PWA_SERVICE_WORKER_MODE == 'template':
+            # get the list of "cached" entries
+            _files = [
+                # the icons
+                *[icon['src'] for icon in app_settings.PWA_APP_ICONS],
+                # the splash screens
+                *[screen['src'] for screen in app_settings.PWA_APP_SPLASH_SCREEN],
+                # other files
+                *app_settings.PWA_SERVICE_WORKER_EXTRA_FILES,
+            ]
+
+            return render(
+                request,
+                app_settings.PWA_SERVICE_WORKER_TEMPLATE,
+                {
+                    'pwa_offline_url': resolve_url('offline'),
+                    'pwa_cache_key': app_settings.PWA_SERVICE_WORKER_CACHE_KEY,
+                    'pwa_cached_files': _files,
+                },
+                content_type='application/javascript',
+            )
+
+        return HttpResponse(
+            open(app_settings.PWA_SERVICE_WORKER_PATH).read(),
+            content_type='application/javascript'
+        )
+
+    except Exception:
+        # return an empty js file with any error
+        return HttpResponse('', content_type='application/javascript')
 
 
 def manifest(request):

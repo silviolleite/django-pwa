@@ -2,7 +2,7 @@ django-pwa
 =====
 [![Build Status](https://travis-ci.org/silviolleite/django-pwa.svg)](https://travis-ci.org/silviolleite/django-pwa)
 [![Maintainability](https://api.codeclimate.com/v1/badges/246542ea921058c4f76f/maintainability)](https://codeclimate.com/github/silviolleite/django-pwa/maintainability)
-[![codecov](https://codecov.io/gh/silviolleite/django-pwa/branch/master/graph/badge.svg)](https://codecov.io/gh/silviolleite/django-pwa) 
+[![codecov](https://codecov.io/gh/silviolleite/django-pwa/branch/master/graph/badge.svg)](https://codecov.io/gh/silviolleite/django-pwa)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/django-pwa.svg)](https://pypi.org/project/django-pwa/)
 [![PyPI - Downloads](https://img.shields.io/pypi/v/django-pwa.svg)](https://pypi.org/project/django-pwa)
 [![PyPI - Downloads](https://img.shields.io/pypi/djversions/django-pwa.svg)](https://pypi.org/project/django-pwa)
@@ -47,7 +47,7 @@ Configure your app name, description, icons and splash screen images in settings
 ```python
 
 PWA_APP_NAME = 'My App'
-PWA_APP_DESCRIPTION = "My app description"
+PWA_APP_DESCRIPTION = 'My app description'
 PWA_APP_THEME_COLOR = '#0A0302'
 PWA_APP_BACKGROUND_COLOR = '#ffffff'
 PWA_APP_DISPLAY = 'standalone'
@@ -78,7 +78,7 @@ PWA_APP_LANG = 'en-US'
 
 ```
 #### Show console.log
-Set the `PWA_APP_DEBUG_MODE = False` to disable the the `console.log` on browser. 
+Set the `PWA_APP_DEBUG_MODE = False` to disable the the `console.log` on browser.
 
 All settings are optional, and the app will work fine with its internal defaults.  Highly recommend setting at least `PWA_APP_NAME`, `PWA_APP_DESCRIPTION`, `PWA_APP_ICONS` and `PWA_APP_SPLASH_SCREEN`.
 
@@ -121,9 +121,12 @@ By default, the service worker implemented by this app is:
 ```js
 // Base Service Worker implementation.  To use your own Service Worker, set the PWA_SERVICE_WORKER_PATH variable in settings.py
 
-var staticCacheName = "django-pwa-v" + new Date().getTime();
+var staticCacheKey = 'django-pwa-';
+var staticCacheName = staticCacheKey + 'v' + new Date().getTime();
+
+var offlineUrl = '/offline/';
 var filesToCache = [
-    '/offline',
+    offlineUrl,
     '/css/django-pwa-app.css',
     '/images/icons/icon-72x72.png',
     '/images/icons/icon-96x96.png',
@@ -146,14 +149,14 @@ var filesToCache = [
 ];
 
 // Cache on install
-self.addEventListener("install", event => {
+self.addEventListener('install', event => {
     this.skipWaiting();
     event.waitUntil(
         caches.open(staticCacheName)
             .then(cache => {
                 return cache.addAll(filesToCache);
             })
-    )
+    );
 });
 
 // Clear cache on activate
@@ -162,7 +165,7 @@ self.addEventListener('activate', event => {
         caches.keys().then(cacheNames => {
             return Promise.all(
                 cacheNames
-                    .filter(cacheName => (cacheName.startsWith("django-pwa-")))
+                    .filter(cacheName => (cacheName.startsWith(staticCacheKey)))
                     .filter(cacheName => (cacheName !== staticCacheName))
                     .map(cacheName => caches.delete(cacheName))
             );
@@ -171,32 +174,65 @@ self.addEventListener('activate', event => {
 });
 
 // Serve from Cache
-self.addEventListener("fetch", event => {
+self.addEventListener('fetch', event => {
     event.respondWith(
         caches.match(event.request)
             .then(response => {
                 return response || fetch(event.request);
             })
             .catch(() => {
-                return caches.match('offline');
+                return caches.match(offlineUrl);
             })
-    )
+    );
 });
 ```
 
 Adding Your Own Service Worker
 =====
-To add service worker functionality, you'll want to create a `serviceworker.js` or similarly named template in a template directory, and then point at it using the PWA_SERVICE_WORKER_PATH variable (PWA_APP_FETCH_URL is passed through).
+To add service worker functionality, you'll want to create a `serviceworker.js` or similarly named template in a template directory, and then point at it using the `PWA_SERVICE_WORKER_PATH` variable (`PWA_APP_FETCH_URL` is passed through).
 
 ```python
+# Using an absolute path that will be returned as it is
+PWA_SERVICE_WORKER_MODE = 'path'
 PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'my_app', 'serviceworker.js')
+```
 
+Adding Your Own Service Worker as template
+=====
+To add a dynamic service worker functionality, you'll want to create a `serviceworker.tmpl` or similarly named template in a template directory, and then point at it using the `PWA_SERVICE_WORKER_TEMPLATE` variable (`PWA_APP_FETCH_URL` is passed through).
+
+```python
+# Using a template that allows dynamic content
+PWA_SERVICE_WORKER_MODE = 'template'
+PWA_SERVICE_WORKER_TEMPLATE = 'my_app/serviceworker.tmpl'
+PWA_SERVICE_WORKER_CACHE_KEY = 'my-app-pwa-'
+PWA_SERVICE_WORKER_EXTRA_FILES = [
+    # include other necessary files
+]
+```
+
+The `serviceworker.tmpl` template can be easily extended.
+
+Sample of `my_app/serviceworker.tmpl` file:
+
+```tmpl
+{% extends "serviceworker.tmpl" %}
+
+{% load static %}
+
+{% block pwa_custom %}
+// include favicon
+filesToCache.push('{% static "favicon.ico" %}');
+
+// include robots.txt
+filesToCache.push('robots.txt');
+{% endblock pwa_custom %}
 ```
 
 The offline view
 =====
 By default, the offline view is implemented in `templates/offline.html`
-You can overwrite it in a template directory if you continue using the default `serviceworker.js`.  
+You can overwrite it in a template directory if you continue using the default `serviceworker.js`.
 
 
 Feedback
