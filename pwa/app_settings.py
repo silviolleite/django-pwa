@@ -8,13 +8,21 @@ import os
 # Lazy-evaluate URLs so including pwa.urls in root urlconf works
 resolve_url = lazy(resolve_url, str)
 
+_here_ = os.path.abspath(os.path.dirname(__file__))
+
 # Get script prefix for apps not mounted under /
 _PWA_SCRIPT_PREFIX = get_script_prefix()
 
+PWA_SERVICE_WORKER_MODE = getattr(settings, 'PWA_SERVICE_WORKER_MODE', 'path')
+
 # Path to the service worker implementation.  Default implementation is empty.
 PWA_SERVICE_WORKER_PATH = getattr(settings, 'PWA_SERVICE_WORKER_PATH',
-                                  os.path.join(os.path.abspath(os.path.dirname(__file__)), 'templates',
-                                               'serviceworker.js'))
+                                  os.path.join(_here_, 'templates', 'serviceworker.js'))
+# Templated service worker
+PWA_SERVICE_WORKER_CACHE_KEY = getattr(settings, 'PWA_SERVICE_WORKER_CACHE_KEY', 'django-pwa-')
+PWA_SERVICE_WORKER_EXTRA_FILES = getattr(settings, 'PWA_SERVICE_WORKER_EXTRA_FILES', [])
+PWA_SERVICE_WORKER_TEMPLATE = getattr(settings, 'PWA_SERVICE_WORKER_TEMPLATE', 'serviceworker.tmpl')
+
 # App parameters to include in manifest.json and appropriate meta tags
 PWA_APP_NAME = getattr(settings, 'PWA_APP_NAME', 'MyApp')
 PWA_APP_DESCRIPTION = getattr(settings, 'PWA_APP_DESCRIPTION', 'My Progressive Web App')
