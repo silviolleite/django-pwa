@@ -107,17 +107,5 @@ PWA_APP_SPLASH_SCREEN = getattr(settings, 'PWA_APP_SPLASH_SCREEN', [
 ])
 PWA_APP_DIR = getattr(settings, 'PWA_APP_DIR', 'auto')
 PWA_APP_LANG = getattr(settings, 'PWA_APP_LANG', 'en-US')
-PWA_APP_SCREENSHOTS = getattr(settings, 'PWA_APP_SCREENSHOTS', [
-    {
-      'src': '/static/images/icons/splash-750x1334.png',
-      'sizes': '750x1334',
-      "type": "image/png"
-    }
-  ])
-PWA_APP_SHORTCUTS = getattr(settings, "PWA_APP_SHORTCUTS", [
-    {
-        'name': 'Home',
-        'url': '/',
-        'description': 'Startpage of the application'
-    }
-])
+PWA_APP_SCREENSHOTS = getattr(settings, 'PWA_APP_SCREENSHOTS', [])
+PWA_APP_SHORTCUTS = getattr(settings, "PWA_APP_SHORTCUTS", [])
