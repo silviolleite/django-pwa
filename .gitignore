@@ -8,3 +8,4 @@ dist/
 .tox/
 .coverage
 .DS_Store
+venv

@@ -10,12 +10,15 @@ def service_worker(request):
 
 
 def manifest(request):
+    response = HttpResponse(open(app_settings.PWA_MANIFEST_PATH).read(), content_type='application/json')
+    if response != None and response != '':
+        return response
     return render(request, 'manifest.json', {
         setting_name: getattr(app_settings, setting_name)
         for setting_name in dir(app_settings)
         if setting_name.startswith('PWA_')
     }, content_type='application/json')
-
+    
 
 def offline(request):
     return render(request, "offline.html")

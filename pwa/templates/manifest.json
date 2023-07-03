@@ -1,7 +1,7 @@
 {% load pwa %}
 {
   "name": {{ PWA_APP_NAME|js }},
-  "short_name": {{ PWA_APP_NAME|js }},
+  "short_name": {{ PWA_APP_SHORT_NAME|js }},
   "description": {{ PWA_APP_DESCRIPTION|js }},
   "start_url": {{ PWA_APP_START_URL|js }},
   "display": {{ PWA_APP_DISPLAY|js }},
