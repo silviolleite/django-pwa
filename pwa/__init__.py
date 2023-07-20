@@ -1,1 +1,1 @@
-default_app_config = 'pwa.apps.PwaConfig'
+default_app_config = "pwa.apps.PwaConfig"

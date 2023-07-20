@@ -1,10 +1,10 @@
-from django.test import TestCase
 from django.shortcuts import resolve_url as r
+from django.test import TestCase
 
 
 class ServiceWorkerTest(TestCase):
     def setUp(self):
-        self.response = self.client.get(r('serviceworker'))
+        self.response = self.client.get(r("serviceworker"))
 
     def test_get(self):
         """GET /serviceworker.js Should return status code 200"""
@@ -13,7 +13,7 @@ class ServiceWorkerTest(TestCase):
 
 class ManifestTest(TestCase):
     def setUp(self):
-        self.response = self.client.get(r('manifest'), format='json')
+        self.response = self.client.get(r("manifest"), format="json")
 
     def test_get(self):
         """GET /manifest.json Should return status code 200"""
@@ -21,11 +21,11 @@ class ManifestTest(TestCase):
 
     def test_content_type_json(self):
         """The content type Must be JSON"""
-        self.assertEqual(self.response['content-type'], 'application/json')
+        self.assertEqual(self.response["content-type"], "application/json")
 
     def test_template(self):
         """Must have the template manifest.json"""
-        self.assertTemplateUsed(self.response, 'manifest.json')
+        self.assertTemplateUsed(self.response, "manifest.json")
 
     def test_manifest_contains(self):
         """Must be the attributes to manifest.json"""
@@ -44,7 +44,7 @@ class ManifestTest(TestCase):
             '"lang":',
             '"status_bar":',
             '"screenshots" :',
-            '"shortcuts" :'
+            '"shortcuts" :',
         ]
         for expected in contents:
             with self.subTest():
@@ -53,9 +53,8 @@ class ManifestTest(TestCase):
 
 class OfflineTest(TestCase):
     def setUp(self):
-        self.response = self.client.get(r('offline'))
+        self.response = self.client.get(r("offline"))
 
     def test_get(self):
         """GET /offline Should return status code 200"""
         self.assertEqual(200, self.response.status_code)
-

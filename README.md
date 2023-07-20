@@ -2,7 +2,7 @@ django-pwa
 =====
 [![Build Status](https://travis-ci.org/silviolleite/django-pwa.svg)](https://travis-ci.org/silviolleite/django-pwa)
 [![Maintainability](https://api.codeclimate.com/v1/badges/246542ea921058c4f76f/maintainability)](https://codeclimate.com/github/silviolleite/django-pwa/maintainability)
-[![codecov](https://codecov.io/gh/silviolleite/django-pwa/branch/master/graph/badge.svg)](https://codecov.io/gh/silviolleite/django-pwa) 
+[![codecov](https://codecov.io/gh/silviolleite/django-pwa/branch/master/graph/badge.svg)](https://codecov.io/gh/silviolleite/django-pwa)
 [![PyPI - Downloads](https://img.shields.io/pypi/dm/django-pwa.svg)](https://pypi.org/project/django-pwa/)
 [![PyPI - Downloads](https://img.shields.io/pypi/v/django-pwa.svg)](https://pypi.org/project/django-pwa)
 [![PyPI - Downloads](https://img.shields.io/pypi/djversions/django-pwa.svg)](https://pypi.org/project/django-pwa)
@@ -92,7 +92,7 @@ PWA_APP_SCREENSHOTS = [
 
 ```
 #### Show console.log
-Set the `PWA_APP_DEBUG_MODE = False` to disable the the `console.log` on browser. 
+Set the `PWA_APP_DEBUG_MODE = False` to disable the the `console.log` on browser.
 
 All settings are optional, and the app will work fine with its internal defaults.  Highly recommend setting at least `PWA_APP_NAME`, `PWA_APP_DESCRIPTION`, `PWA_APP_ICONS` and `PWA_APP_SPLASH_SCREEN`.
 In order to not use one of the internal defaults, a setting can be set to an empty string or list, whichever one is applicable.
@@ -211,7 +211,7 @@ PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'my_app', 'serviceworker.js')
 The offline view
 =====
 By default, the offline view is implemented in `templates/offline.html`
-You can overwrite it in a template directory if you continue using the default `serviceworker.js`.  
+You can overwrite it in a template directory if you continue using the default `serviceworker.js`.
 
 
 Feedback
