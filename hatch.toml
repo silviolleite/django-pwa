@@ -1,0 +1,13 @@
+[tool.hatch.envs.lint.env-vars]
+DJANGO_SETTINGS_MODULE = "tests.settings"
+
+[envs.test.scripts]
+test = "python runtests.py"
+
+[[envs.test.matrix]]
+python = ["3.5", "3.6", "3.7"]
+django = ["2.0", "2.1"]
+
+[[envs.test.matrix]]
+python = ["3.7", "3.8"]
+django = ["3.0"]

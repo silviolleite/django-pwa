@@ -1,0 +1,46 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "django-pwa"
+version="1.1.0"
+description = "A Django app to include a manifest.json and Service Worker instance to enable progressive web app behavior"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Silvio Luis", email = "silviolleite@gmail.com" }]
+maintainers = [{ name = "Christian Hartung", email = "hartungstenio@outlook.com" }]
+classifiers = [
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 2.0",
+    "Framework :: Django :: 2.1",
+    "Framework :: Django :: 3.0",
+    "Framework :: Django :: 3.1",
+    "Framework :: Django :: 3.2",
+    "Framework :: Django :: 4.0",
+    "Framework :: Django :: 4.1",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.4",
+    "Programming Language :: Python :: 3.5",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Topic :: Internet :: WWW/HTTP",
+    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+]
+requires-python = ">=3.4"
+dependencies = ["django>=2.0"]
+
+[project.urls]
+Repository = "http://github.com/silviolleite/django-pwa"
+
+[tool.hatch.build.targets.sdist]
+packages = ["/pwa", "/tests"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["/pwa"]
