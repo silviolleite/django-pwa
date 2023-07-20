@@ -4,10 +4,35 @@ DJANGO_SETTINGS_MODULE = "tests.settings"
 [envs.test.scripts]
 test = "python runtests.py"
 
-[[envs.test.matrix]]
-python = ["3.5", "3.6", "3.7"]
-django = ["2.0", "2.1"]
+[envs.test.overrides]
+matrix.django.dependencies = [
+    { value = "django>=2.0,<2.1", if = ["2.0"] },
+    { value = "django>=2.1,<2.2", if = ["2.1"] },
+    { value = "django>=2.2,<3.0", if = ["2.2"] },
+    { value = "django>=2.0,<3.1", if = ["3.0"] },
+    { value = "django>=2.1,<3.2", if = ["3.1"] },
+    { value = "django>=2.2,<4.0", if = ["3.2"] },
+    { value = "django>=4.0,<4.1", if = ["4.0"] },
+    { value = "django>=4.1,<4.2", if = ["4.1"] },
+    { value = "django>=4.2,<5.0", if = ["4.2"] },
+]
 
 [[envs.test.matrix]]
-python = ["3.7", "3.8"]
-django = ["3.0"]
+python = ["3.5"]
+django = ["2.0", "2.1", "2.2"]
+
+[[envs.test.matrix]]
+python = ["3.6", "3.7"]
+django = ["2.0", "2.1", "2.2", "3.0", "3.1", "3.2"]
+
+[[envs.test.matrix]]
+python = ["3.8", "3.9"]
+django = ["2.2", "3.0", "3.1", "3.2", "4.0", "4.1", "4.2"]
+
+[[envs.test.matrix]]
+python = ["3.10"]
+django = ["3.2", "4.0", "4.1", "4.2"]
+
+[[envs.test.matrix]]
+python = ["3.11"]
+django = ["4.1", "4.2"]
