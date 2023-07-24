@@ -4,12 +4,14 @@ build-backend = "hatchling.build"
 
 [project]
 name = "django-pwa"
-version="1.1.0"
+version = "1.1.0"
 description = "A Django app to include a manifest.json and Service Worker instance to enable progressive web app behavior"
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [{ name = "Silvio Luis", email = "silviolleite@gmail.com" }]
-maintainers = [{ name = "Christian Hartung", email = "hartungstenio@outlook.com" }]
+maintainers = [
+    { name = "Christian Hartung", email = "hartungstenio@outlook.com" },
+]
 classifiers = [
     "Environment :: Web Environment",
     "Framework :: Django",
@@ -47,3 +49,14 @@ packages = ["/pwa", "/tests"]
 
 [tool.hatch.build.targets.wheel]
 packages = ["/pwa"]
+
+[tool.black]
+line-length = 110
+target-version = ["py34", "py35", "py36", "py37", "py38"]
+
+[tool.isort]
+profile = "black"
+line_length = 110
+known_localfolder = ["pwa", "tests"]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "LOCALFOLDER"]
+default_section = "THIRDPARTY"

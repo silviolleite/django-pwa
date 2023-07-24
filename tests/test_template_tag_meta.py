@@ -1,14 +1,11 @@
-from django.test import TestCase
 from django.template import Context, Template
+from django.test import TestCase
 
 
 class CreateMetaTemplateTagTest(TestCase):
     def setUp(self):
         context = Context({})
-        template_to_render = Template(
-            '{% load pwa %}'
-            '{% progressive_web_app_meta %}'
-        )
+        template_to_render = Template("{% load pwa %}" "{% progressive_web_app_meta %}")
         self.rendered_template = template_to_render.render(context)
 
     def test_has_tags(self):
@@ -41,7 +38,7 @@ class CreateMetaTemplateTagTest(TestCase):
             '<link href="/static/images/icons/splash-1668x2388.png" media="(device-width: 834px) and (device-height: 1194px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"/>',
             '<link href="/static/images/icons/splash-2048x2732.png" media="(device-width: 1024px) and (device-height: 1366px) and (-webkit-device-pixel-ratio: 2)" rel="apple-touch-startup-image"/>',
             '<meta name="msapplication-TileColor" content="#fff">',
-            '<meta name="msapplication-TileImage" content="/static/images/icons/icon-512x512.png">'
+            '<meta name="msapplication-TileImage" content="/static/images/icons/icon-512x512.png">',
         ]
         for text in tags:
             with self.subTest():
@@ -59,7 +56,7 @@ class CreateMetaTemplateTagTest(TestCase):
             "}, function (err) {",
             "console.log('django-pwa: ServiceWorker registration failed: ', err);",
             "});",
-            "</script>"
+            "</script>",
         ]
 
         for expected in contents:

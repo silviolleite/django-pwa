@@ -11,6 +11,27 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  lint:
+    name: lint
+    runs-on: ubuntu-latest
+    env:
+      HATCH_ENV: lint
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Hatch
+        run: pipx install hatch
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Run linters
+        run: |
+          hatch env run lint
+
   test:
     name: Run tests
     runs-on: ubuntu-20.04

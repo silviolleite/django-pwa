@@ -1,4 +1,14 @@
-[tool.hatch.envs.lint.env-vars]
+[envs.lint]
+detached = true
+dependencies = ["pre-commit"]
+
+[envs.lint.env-vars]
+SKIP = "no-commit-to-branch"
+
+[envs.lint.scripts]
+lint = "pre-commit run -a -v"
+
+[envs.test.env-vars]
 DJANGO_SETTINGS_MODULE = "tests.settings"
 
 [envs.test.scripts]
