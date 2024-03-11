@@ -9,16 +9,10 @@ description = "A Django app to include a manifest.json and Service Worker instan
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [{ name = "Silvio Luis", email = "silviolleite@gmail.com" }]
-maintainers = [
-    { name = "Christian Hartung", email = "hartungstenio@outlook.com" },
-]
+maintainers = [{ name = "Christian Hartung", email = "hartungstenio@outlook.com" }]
 classifiers = [
     "Environment :: Web Environment",
     "Framework :: Django",
-    "Framework :: Django :: 2.0",
-    "Framework :: Django :: 2.1",
-    "Framework :: Django :: 3.0",
-    "Framework :: Django :: 3.1",
     "Framework :: Django :: 3.2",
     "Framework :: Django :: 4.0",
     "Framework :: Django :: 4.1",
@@ -28,9 +22,6 @@ classifiers = [
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.5",
-    "Programming Language :: Python :: 3.6",
-    "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
@@ -38,8 +29,8 @@ classifiers = [
     "Topic :: Internet :: WWW/HTTP",
     "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
 ]
-requires-python = ">=3.5"
-dependencies = ["django>=2.0"]
+requires-python = ">=3.8"
+dependencies = ["django>=3.2"]
 
 [project.urls]
 Repository = "http://github.com/silviolleite/django-pwa"
@@ -52,7 +43,7 @@ packages = ["/pwa"]
 
 [tool.black]
 line-length = 110
-target-version = ["py34", "py35", "py36", "py37", "py38"]
+target-version = ["py38", "py39", "py310", "py311"]
 
 [tool.isort]
 profile = "black"
