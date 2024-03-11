@@ -50,10 +50,10 @@ repos:
     rev: v3.15.1
     hooks:
       - id: pyupgrade
-        args: [--py3-plus]
+        args: [--py38-plus]
 
   - repo: https://github.com/adamchainz/django-upgrade
     rev: "1.16.0"
     hooks:
       - id: django-upgrade
-        args: [--target-version, "2.0"]
+        args: [--target-version, "3.2"]
