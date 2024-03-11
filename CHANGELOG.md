@@ -74,6 +74,9 @@
   - Drop support for Django 1.8
 
 ## 2.0.0
+  ### Added
+  - Support for Django 5.0
+  - Support for Python 3.12
 
   ### Removed
   - Minimum django version is now 3.2
