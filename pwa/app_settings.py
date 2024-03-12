@@ -45,6 +45,7 @@ PWA_APP_ICONS = getattr(
         {"src": "/static/images/icons/icon-512x512.png", "sizes": "512x512"},
     ],
 )
+PWA_APP_ICONS_APPLE = getattr(settings, "PWA_APP_ICONS_APPLE", [])
 PWA_APP_SPLASH_SCREEN = getattr(
     settings,
     "PWA_APP_SPLASH_SCREEN",
