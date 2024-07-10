@@ -13,6 +13,7 @@
 	 "customizations": {
 		"vscode": {
 			"extensions": [
+				"EditorConfig.EditorConfig",
 				"github.vscode-github-actions",
 				"ms-python.black-formatter",
 				"ms-python.flake8",
