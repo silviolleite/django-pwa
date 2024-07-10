@@ -1,0 +1,39 @@
+{
+	"name": "Python 3",
+	"image": "mcr.microsoft.com/devcontainers/python:3",
+	"features": {
+		"ghcr.io/devcontainers-contrib/features/hatch:2": {},
+		"ghcr.io/devcontainers-contrib/features/pre-commit:2": {}
+	},
+
+	"forwardPorts": [],
+
+	"postCreateCommand": "hatch env create",
+
+	 "customizations": {
+		"vscode": {
+			"extensions": [
+				"github.vscode-github-actions",
+				"ms-python.black-formatter",
+				"ms-python.flake8",
+				"ms-python.isort",
+				"ms-python.python",
+				"redhat.vscode-yaml",
+				"tamasfe.even-better-toml"
+			],
+			"settings": {
+				"[python]": {
+					"editor.defaultFormatter": "ms-python.black-formatter",
+					"editor.formatOnSave": true,
+					"editor.codeActionsOnSave": {
+						"source.organizeImports": "explicit"
+					}
+				},
+				"isort.args": [
+					"--profile",
+					"black"
+				]
+			}
+		}
+	 }
+}
