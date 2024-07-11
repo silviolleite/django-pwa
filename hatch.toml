@@ -1,12 +1,5 @@
-[envs.lint]
-detached = true
-dependencies = ["pre-commit"]
-
-[envs.lint.env-vars]
-SKIP = "no-commit-to-branch"
-
-[envs.lint.scripts]
-lint = "pre-commit run -a -v"
+[envs.hatch-static-analysis]
+config-path = "ruff_defaults.toml"
 
 [envs.test.env-vars]
 DJANGO_SETTINGS_MODULE = "tests.settings"

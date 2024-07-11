@@ -4,13 +4,12 @@ from django.shortcuts import render
 from . import app_settings
 
 
-def service_worker(request):
+def service_worker(request):  # noqa: ARG001
     with open(app_settings.PWA_SERVICE_WORKER_PATH) as serviceworker_file:
-        response = HttpResponse(
+        return HttpResponse(
             serviceworker_file.read(),
             content_type="application/javascript",
         )
-    return response
 
 
 def manifest(request):

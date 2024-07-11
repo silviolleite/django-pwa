@@ -3,7 +3,8 @@
 	"image": "mcr.microsoft.com/devcontainers/python:3",
 	"features": {
 		"ghcr.io/devcontainers-contrib/features/hatch:2": {},
-		"ghcr.io/devcontainers-contrib/features/pre-commit:2": {}
+		"ghcr.io/devcontainers-contrib/features/pre-commit:2": {},
+		"ghcr.io/devcontainers-contrib/features/ruff:1": {}
 	},
 
 	"forwardPorts": [],
@@ -13,27 +14,21 @@
 	 "customizations": {
 		"vscode": {
 			"extensions": [
+				"charliermarsh.ruff",
 				"EditorConfig.EditorConfig",
 				"github.vscode-github-actions",
-				"ms-python.black-formatter",
-				"ms-python.flake8",
-				"ms-python.isort",
 				"ms-python.python",
 				"redhat.vscode-yaml",
 				"tamasfe.even-better-toml"
 			],
 			"settings": {
 				"[python]": {
-					"editor.defaultFormatter": "ms-python.black-formatter",
+					"editor.defaultFormatter": "charliermarsh.ruff",
 					"editor.formatOnSave": true,
 					"editor.codeActionsOnSave": {
 						"source.organizeImports": "explicit"
 					}
-				},
-				"isort.args": [
-					"--profile",
-					"black"
-				]
+				}
 			}
 		}
 	 }
