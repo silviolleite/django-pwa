@@ -43,13 +43,14 @@ packages = ["/pwa", "/tests"]
 [tool.hatch.build.targets.wheel]
 packages = ["/pwa"]
 
-[tool.black]
-line-length = 110
-target-version = ["py38", "py39", "py310", "py311", "py312"]
+[tool.ruff]
+extend = "ruff_defaults.toml"
 
-[tool.isort]
-profile = "black"
-line_length = 110
-known_localfolder = ["pwa", "tests"]
-sections = ["FUTURE", "STDLIB", "THIRDPARTY", "LOCALFOLDER"]
-default_section = "THIRDPARTY"
+[tool.ruff.lint]
+extend-select = ["DJ"]
+
+[tool.ruff.lint.extend-per-file-ignores]
+"tests/test_*.py" = ["PT"]
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "parents"

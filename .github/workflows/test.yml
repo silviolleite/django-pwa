@@ -11,26 +11,23 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  lint:
-    name: lint
+  static-analysis:
+    name: static analysis
     runs-on: ubuntu-latest
-    env:
-      HATCH_ENV: lint
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Hatch
-        run: pipx install hatch
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
 
-      - name: Run linters
-        run: |
-          hatch env run lint
+      - name: Setup Hatch
+        run: pipx install hatch
+
+      - name: Run static analysis
+        run: hatch fmt --check
 
   test:
     name: Run tests
@@ -50,9 +47,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
 
       - name: Setup Hatch
-        run: |
-          pipx install hatch
+        run: pipx install hatch
 
       - name: Run tests
-        run: |
-          hatch env run -i py=${{ matrix.python-version }} test
+        run: hatch env run -i py=${{ matrix.python-version }} test
