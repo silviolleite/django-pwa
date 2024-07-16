@@ -1,10 +1,10 @@
 [build-system]
-requires = ["hatchling"]
+requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
 
 [project]
 name = "django-pwa"
-version = "1.1.0"
+dynamic = ["version"]
 description = "A Django app to include a manifest.json and Service Worker instance to enable progressive web app behavior"
 readme = "README.md"
 license = { file = "LICENSE" }
@@ -36,6 +36,9 @@ dependencies = ["django>=3.2"]
 
 [project.urls]
 Repository = "http://github.com/silviolleite/django-pwa"
+
+[tool.hatch.version]
+source = "vcs"
 
 [tool.hatch.build.targets.sdist]
 packages = ["/pwa", "/tests"]
