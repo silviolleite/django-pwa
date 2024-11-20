@@ -44,7 +44,7 @@ source = "vcs"
 packages = ["/pwa", "/tests"]
 
 [tool.hatch.build.targets.wheel]
-packages = ["/pwa"]
+packages = ["src/pwa"]
 
 [tool.ruff]
 extend = "ruff_defaults.toml"
