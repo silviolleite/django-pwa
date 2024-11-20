@@ -36,24 +36,114 @@ dependencies = ["django>=3.2"]
 
 [project.urls]
 Repository = "http://github.com/silviolleite/django-pwa"
+Issues = "http://github.com/silviolleite/django-pwa"
+
+[tool.coverage.run]
+source_pkgs = ["pwa", "tests"]
+branch = true
+parallel = true
+
+[tool.coverage.paths]
+pwa = ["src/pwa", "*/django-pwa/src/pwa"]
+tests = ["tests", "*/django-pwa/tests"]
+
+[tool.coverage.report]
+exclude_lines = [
+  "no cov",
+  "if __name__ == .__main__.:",
+  "if TYPE_CHECKING:",
+]
+
+[tool.deptry]
+known_first_party = ["pwa"]
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "testproj.settings"
+pythonpath = [".", "src"]
+
+[tool.hatch.build.targets.sdist]
+exclude = ["/.devcontainer", "/.github"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pwa"]
 
 [tool.hatch.version]
 source = "vcs"
 
-[tool.hatch.build.targets.sdist]
-packages = ["/pwa", "/tests"]
+[tool.hatch.envs.default]
+dependencies = [
+  "coverage[toml]>=6.5",
+  "faker",
+  "pytest",
+  "pytest-django",
+]
 
-[tool.hatch.build.targets.wheel]
-packages = ["src/pwa"]
+[tool.hatch.envs.default.scripts]
+test = "pytest {args:tests}"
+test-cov = "coverage run -m pytest {args:tests}"
+cov-report = [
+  "- coverage combine",
+  "coverage report",
+]
+cov = [
+  "test-cov",
+  "cov-report",
+]
+
+[[tool.hatch.envs.all.matrix]]
+python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+[tool.hatch.envs.style]
+detached = true
+dependencies = ["deptry", "pre-commit"]
+
+[tool.hatch.envs.style.scripts]
+deps = "deptry ."
+lint = "pre-commit run -a -v"
+update = "pre-commit autoupdate"
+check = [
+  "deps",
+  "lint",
+]
+
+[tool.hatch.envs.tests.overrides]
+matrix.django.dependencies = [
+    { value = "django>=3.2,<4.0", if = ["3.2"] },
+    { value = "django>=4.0,<4.1", if = ["4.0"] },
+    { value = "django>=4.1,<4.2", if = ["4.1"] },
+    { value = "django>=4.2,<5.0", if = ["4.2"] },
+    { value = "django>=5.0,<5.1", if = ["5.0"] },
+]
+
+[[tool.hatch.envs.tests.matrix]]
+django = ["3.2"]
+python = ["3.8", "3.9", "3.10"]
+
+[[tool.hatch.envs.tests.matrix]]
+django = ["4.0"]
+python = ["3.8", "3.9", "3.10"]
+
+[[tool.hatch.envs.tests.matrix]]
+django = ["4.1"]
+python = ["3.8", "3.9", "3.10", "3.11"]
+
+[[tool.hatch.envs.tests.matrix]]
+django = ["4.2"]
+python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+[[tool.hatch.envs.tests.matrix]]
+django = ["5.0"]
+python = ["3.10", "3.11", "3.12"]
+
+[tool.hatch.envs.hatch-static-analysis]
+config-path = "ruff_defaults.toml"
+dependencies = ["ruff==0.7.4"]
 
 [tool.ruff]
 extend = "ruff_defaults.toml"
 
 [tool.ruff.lint]
 extend-select = ["DJ"]
-
-[tool.ruff.lint.extend-per-file-ignores]
-"tests/test_*.py" = ["PT"]
 
 [tool.ruff.lint.flake8-tidy-imports]
 ban-relative-imports = "parents"

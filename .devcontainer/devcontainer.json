@@ -4,7 +4,9 @@
 	"features": {
 		"ghcr.io/devcontainers-contrib/features/hatch:2": {},
 		"ghcr.io/devcontainers-contrib/features/pre-commit:2": {},
-		"ghcr.io/devcontainers-contrib/features/ruff:1": {}
+		"ghcr.io/devcontainers-contrib/features/ruff:1": {
+			"version": "0.7.4"
+		}
 	},
 
 	"forwardPorts": [],

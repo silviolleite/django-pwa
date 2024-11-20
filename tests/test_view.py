@@ -1,60 +1,43 @@
-from django.shortcuts import resolve_url as r
-from django.test import TestCase
+from http import HTTPStatus
+
+from django.urls import reverse
+from pytest_django.asserts import assertContains, assertTemplateUsed
 
 
-class ServiceWorkerTest(TestCase):
-    def setUp(self):
-        self.response = self.client.get(r("serviceworker"))
+def test_service_worker_get(client):
+    response = client.get(reverse("pwa:serviceworker"))
 
-    def test_get(self):
-        """GET /serviceworker.js Should return status code 200"""
-        self.assertEqual(200, self.response.status_code)
+    assert response.status_code == HTTPStatus.OK
 
 
-class ManifestTest(TestCase):
-    def setUp(self):
-        self.response = self.client.get(r("manifest"), format="json")
+def test_manifest_get(client):
+    response = client.get(reverse("pwa:manifest"), format="json")
 
-    def test_get(self):
-        """GET /manifest.json Should return status code 200"""
-        self.assertEqual(self.response.status_code, 200)
-
-    def test_content_type_json(self):
-        """The content type Must be JSON"""
-        self.assertEqual(self.response["content-type"], "application/json")
-
-    def test_template(self):
-        """Must have the template manifest.json"""
-        self.assertTemplateUsed(self.response, "manifest.json")
-
-    def test_manifest_contains(self):
-        """Must be the attributes to manifest.json"""
-        contents = [
-            '"name":',
-            '"short_name":',
-            '"description":',
-            '"start_url":',
-            '"display":',
-            '"scope":',
-            '"background_color":',
-            '"theme_color":',
-            '"orientation":',
-            '"icons":',
-            '"dir":',
-            '"lang":',
-            '"status_bar":',
-            '"screenshots" :',
-            '"shortcuts" :',
-        ]
-        for expected in contents:
-            with self.subTest():
-                self.assertContains(self.response, expected)
+    assert response.status_code == HTTPStatus.OK
+    assert response["content-type"] == "application/json"
+    assertTemplateUsed(response, "manifest.json")
+    contents = [
+        '"name":',
+        '"short_name":',
+        '"description":',
+        '"start_url":',
+        '"display":',
+        '"scope":',
+        '"background_color":',
+        '"theme_color":',
+        '"orientation":',
+        '"icons":',
+        '"dir":',
+        '"lang":',
+        '"status_bar":',
+        '"screenshots" :',
+        '"shortcuts" :',
+    ]
+    for expected in contents:
+        assertContains(response, expected)
 
 
-class OfflineTest(TestCase):
-    def setUp(self):
-        self.response = self.client.get(r("offline"))
+def test_offline_get(client):
+    response = client.get(reverse("pwa:offline"), format="json")
 
-    def test_get(self):
-        """GET /offline Should return status code 200"""
-        self.assertEqual(200, self.response.status_code)
+    assert response.status_code == HTTPStatus.OK
