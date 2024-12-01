@@ -13,6 +13,12 @@ resolve_url = lazy(resolve_url, str)
 # Get script prefix for apps not mounted under /
 _PWA_SCRIPT_PREFIX = get_script_prefix()
 
+# Path to the service worker script that will be registered
+PWA_SERVICE_WORKER_SCRIPT_URL = _PWA_SCRIPT_PREFIX + 'serviceworker.js'
+
+# Path to the manifest
+PWA_MANIFEST_URL = _PWA_SCRIPT_PREFIX + 'manifest.json'
+
 # Path to the service worker implementation.  Default implementation is empty.
 PWA_SERVICE_WORKER_PATH = getattr(
     settings,
