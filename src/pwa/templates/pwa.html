@@ -26,7 +26,7 @@
 
 
 {% for splash in PWA_APP_SPLASH_SCREEN %}
-<link href="{{ splash.src }}" media="{{ splash.media }}" rel="apple-touch-startup-image"/>
+<link href="{{ splash.src }}" media="{{ splash.media }}" rel="apple-touch-startup-image">
 {% endfor %}
 
 
@@ -39,7 +39,7 @@
 <link rel="icon" sizes="{{ icon.sizes }}" href="{{ icon.src }}">
 {% endwith %}
 
-<script type="text/javascript">
+<script>
     // Initialize the service worker
     if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('/serviceworker.js', {
