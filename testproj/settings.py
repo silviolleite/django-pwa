@@ -16,6 +16,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "pwa",
+    "testproj.core",
+    "django.contrib.admin",
 ]
 
 MIDDLEWARE = [
