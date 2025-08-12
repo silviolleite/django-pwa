@@ -74,8 +74,9 @@ source = "vcs"
 dependencies = [
   "coverage[toml]>=6.5",
   "faker",
-  "pytest",
+  "gunicorn",
   "pytest-django",
+  "pytest",
 ]
 
 [tool.hatch.envs.default.scripts]

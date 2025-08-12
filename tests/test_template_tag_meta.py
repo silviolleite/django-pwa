@@ -38,7 +38,7 @@ from pytest_django.asserts import assertInHTML
 )
 def test_has_tags(tag):
     context = Context({})
-    template_to_render = Template("{% load pwa %}" "{% progressive_web_app_meta %}")
+    template_to_render = Template("{% load pwa %}{% progressive_web_app_meta %}")
     rendered_template = template_to_render.render(context)
 
     assertInHTML(tag, rendered_template)
@@ -47,7 +47,7 @@ def test_has_tags(tag):
 @pytest.mark.parametrize(
     "content",
     [
-        '<script type="text/javascript">',
+        "<script>",
         "if ('serviceWorker' in navigator) {",
         "navigator.serviceWorker.register('/serviceworker.js', {",
         "scope: '/'",
@@ -61,7 +61,7 @@ def test_has_tags(tag):
 )
 def test_assert_has_serviceworker(content):
     context = Context({})
-    template_to_render = Template("{% load pwa %}" "{% progressive_web_app_meta %}")
+    template_to_render = Template("{% load pwa %}{% progressive_web_app_meta %}")
     rendered_template = template_to_render.render(context)
 
     assert content in rendered_template
