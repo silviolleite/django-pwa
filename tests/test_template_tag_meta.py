@@ -14,7 +14,7 @@ from pytest_django.asserts import assertInHTML
         '<link rel="apple-touch-icon" href="/static/images/icons/icon-192x192.png" sizes="192x192">',
         '<link rel="apple-touch-icon" href="/static/images/icons/icon-384x384.png" sizes="384x384">',
         '<link rel="apple-touch-icon" href="/static/images/icons/icon-512x512.png" sizes="512x512">',
-        '<link rel="manifest" href="/manifest.json">',
+        '<link rel="manifest" crossorigin="use-credentials" href="/manifest.json">',
         '<meta name="mobile-web-app-capable" content="yes">',
         '<meta name="theme-color" content="#000">',
         '<meta name="apple-mobile-web-app-capable" content="yes">',
