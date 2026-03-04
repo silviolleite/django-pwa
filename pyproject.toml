@@ -158,7 +158,7 @@ python = ["3.12", "3.13", "3.14"]
 
 [tool.hatch.envs.hatch-static-analysis]
 config-path = "ruff_defaults.toml"
-dependencies = ["ruff==0.7.4"]
+dependencies = ["ruff==0.15.4"]
 
 [tool.ruff]
 extend = "ruff_defaults.toml"
