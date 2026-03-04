@@ -31,7 +31,7 @@ jobs:
         run: hatch fmt --check
 
       - name: Run linters
-        run: hatch env run -e style deps
+        run: hatch run deps
 
   test:
     name: Run tests

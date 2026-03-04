@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling", "hatch-vcs"]
+requires = ["hatch-vcs", "hatchling"]
 build-backend = "hatchling.build"
 
 [project]
@@ -9,39 +9,52 @@ description = "A Django app to include a manifest.json and Service Worker instan
 readme = "README.md"
 license = { file = "LICENSE" }
 authors = [{ name = "Silvio Luis", email = "silviolleite@gmail.com" }]
-maintainers = [{ name = "Christian Hartung", email = "hartungstenio@outlook.com" }]
+maintainers = [
+  { name = "Christian Hartung", email = "hartungstenio@outlook.com" }
+]
 classifiers = [
-    "Environment :: Web Environment",
-    "Framework :: Django",
-    "Framework :: Django :: 3.2",
-    "Framework :: Django :: 4.0",
-    "Framework :: Django :: 4.1",
-    "Framework :: Django :: 4.2",
-    "Framework :: Django :: 5.0",
-    "Framework :: Django :: 5.1",
-    "Framework :: Django :: 5.2",
-    "Framework :: Django :: 6.0",
-    "Intended Audience :: Developers",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-    "Programming Language :: Python",
-    "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.8",
-    "Programming Language :: Python :: 3.9",
-    "Programming Language :: Python :: 3.10",
-    "Programming Language :: Python :: 3.11",
-    "Programming Language :: Python :: 3.12",
-    "Programming Language :: Python :: 3.13",
-    "Programming Language :: Python :: 3.14",
-    "Topic :: Internet :: WWW/HTTP",
-    "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
+  "Environment :: Web Environment",
+  "Framework :: Django",
+  "Framework :: Django :: 3.2",
+  "Framework :: Django :: 4.0",
+  "Framework :: Django :: 4.1",
+  "Framework :: Django :: 4.2",
+  "Framework :: Django :: 5.0",
+  "Framework :: Django :: 5.1",
+  "Framework :: Django :: 5.2",
+  "Framework :: Django :: 6.0",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Internet :: WWW/HTTP",
+  "Topic :: Internet :: WWW/HTTP :: Dynamic Content",
 ]
 requires-python = ">=3.8"
 dependencies = ["django>=3.2"]
 
 [project.urls]
-Repository = "http://github.com/silviolleite/django-pwa"
 Issues = "http://github.com/silviolleite/django-pwa/issues"
+Repository = "http://github.com/silviolleite/django-pwa"
+
+[dependency-groups]
+dev = [
+  "coverage[toml]>=6.5",
+  "deptry",
+  "faker",
+  "gunicorn",
+  "pre-commit",
+  "pytest",
+  "pytest-django",
+]
 
 [tool.coverage.run]
 source_pkgs = ["pwa", "tests"]
@@ -76,15 +89,16 @@ packages = ["src/pwa"]
 source = "vcs"
 
 [tool.hatch.envs.default]
-dependencies = [
-  "coverage[toml]>=6.5",
-  "faker",
-  "gunicorn",
-  "pytest-django",
-  "pytest",
-]
+dependency-groups = ["dev"]
 
 [tool.hatch.envs.default.scripts]
+deps = "deptry ."
+lint = "pre-commit run -a -v"
+update = "pre-commit autoupdate"
+check = [
+  "deps",
+  "lint",
+]
 test = "pytest {args:tests}"
 test-cov = "coverage run -m pytest {args:tests}"
 cov-report = [
@@ -99,29 +113,16 @@ cov = [
 [[tool.hatch.envs.all.matrix]]
 python = ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
 
-[tool.hatch.envs.style]
-detached = true
-dependencies = ["deptry", "pre-commit"]
-
-[tool.hatch.envs.style.scripts]
-deps = "deptry ."
-lint = "pre-commit run -a -v"
-update = "pre-commit autoupdate"
-check = [
-  "deps",
-  "lint",
-]
-
 [tool.hatch.envs.tests.overrides]
 matrix.django.dependencies = [
-    { value = "django>=3.2,<4.0", if = ["3.2"] },
-    { value = "django>=4.0,<4.1", if = ["4.0"] },
-    { value = "django>=4.1,<4.2", if = ["4.1"] },
-    { value = "django>=4.2,<5.0", if = ["4.2"] },
-    { value = "django>=5.0,<5.1", if = ["5.0"] },
-    { value = "django>=5.1,<5.2", if = ["5.1"] },
-    { value = "django>=5.2,<6.0", if = ["5.2"] },
-    { value = "django>=6.0,<6.1", if = ["6.0"] },
+  { value = "django>=3.2,<4.0", if = ["3.2"] },
+  { value = "django>=4.0,<4.1", if = ["4.0"] },
+  { value = "django>=4.1,<4.2", if = ["4.1"] },
+  { value = "django>=4.2,<5.0", if = ["4.2"] },
+  { value = "django>=5.0,<5.1", if = ["5.0"] },
+  { value = "django>=5.1,<5.2", if = ["5.1"] },
+  { value = "django>=5.2,<6.0", if = ["5.2"] },
+  { value = "django>=6.0,<6.1", if = ["6.0"] },
 ]
 
 [[tool.hatch.envs.tests.matrix]]
