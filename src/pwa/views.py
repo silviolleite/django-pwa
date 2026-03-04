@@ -2,8 +2,10 @@ from django.http import HttpResponse
 from django.shortcuts import render
 
 from . import app_settings
+from ._compat import login_not_required
 
 
+@login_not_required
 def service_worker(request):  # noqa: ARG001
     with open(app_settings.PWA_SERVICE_WORKER_PATH) as serviceworker_file:
         return HttpResponse(
@@ -12,6 +14,7 @@ def service_worker(request):  # noqa: ARG001
         )
 
 
+@login_not_required
 def manifest(request):
     return render(
         request,
@@ -25,5 +28,6 @@ def manifest(request):
     )
 
 
+@login_not_required
 def offline(request):
     return render(request, "offline.html")
