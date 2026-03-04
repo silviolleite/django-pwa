@@ -110,10 +110,25 @@ cov = [
   "cov-report",
 ]
 
-[[tool.hatch.envs.all.matrix]]
-python = ["3.8", "3.9", "3.10", "3.11", "3.12", "3.13", "3.14"]
+[tool.hatch.envs.hatch-static-analysis]
+config-path = "ruff_defaults.toml"
+dependencies = ["ruff==0.15.4"]
 
-[tool.hatch.envs.tests.overrides]
+[tool.hatch.envs.hatch-test]
+dependencies = [ # TODO(@hartungstenio): remove this setting after dropping support for Python 3.9
+  "coverage-enable-subprocess",
+  "coverage[toml]",
+  "pytest",
+  "pytest-mock",
+  "pytest-randomly",
+  "pytest-rerunfailures",
+  "pytest-xdist[psutil]",
+]
+extra-dependencies = [
+  "pytest-django",
+]
+
+[tool.hatch.envs.hatch-test.overrides]
 matrix.django.dependencies = [
   { value = "django>=3.2,<4.0", if = ["3.2"] },
   { value = "django>=4.0,<4.1", if = ["4.0"] },
@@ -125,41 +140,37 @@ matrix.django.dependencies = [
   { value = "django>=6.0,<6.1", if = ["6.0"] },
 ]
 
-[[tool.hatch.envs.tests.matrix]]
+[[tool.hatch.envs.hatch-test.matrix]]
 django = ["3.2"]
 python = ["3.8", "3.9", "3.10"]
 
-[[tool.hatch.envs.tests.matrix]]
+[[tool.hatch.envs.hatch-test.matrix]]
 django = ["4.0"]
 python = ["3.8", "3.9", "3.10"]
 
-[[tool.hatch.envs.tests.matrix]]
+[[tool.hatch.envs.hatch-test.matrix]]
 django = ["4.1"]
 python = ["3.8", "3.9", "3.10", "3.11"]
 
-[[tool.hatch.envs.tests.matrix]]
+[[tool.hatch.envs.hatch-test.matrix]]
 django = ["4.2"]
 python = ["3.8", "3.9", "3.10", "3.11", "3.12"]
 
-[[tool.hatch.envs.tests.matrix]]
+[[tool.hatch.envs.hatch-test.matrix]]
 django = ["5.0"]
 python = ["3.10", "3.11", "3.12"]
 
-[[tool.hatch.envs.tests.matrix]]
+[[tool.hatch.envs.hatch-test.matrix]]
 django = ["5.1"]
 python = ["3.10", "3.11", "3.12", "3.13"]
 
-[[tool.hatch.envs.tests.matrix]]
+[[tool.hatch.envs.hatch-test.matrix]]
 django = ["5.2"]
 python = ["3.10", "3.11", "3.12", "3.13", "3.14"]
 
-[[tool.hatch.envs.tests.matrix]]
+[[tool.hatch.envs.hatch-test.matrix]]
 django = ["6.0"]
 python = ["3.12", "3.13", "3.14"]
-
-[tool.hatch.envs.hatch-static-analysis]
-config-path = "ruff_defaults.toml"
-dependencies = ["ruff==0.15.4"]
 
 [tool.ruff]
 extend = "ruff_defaults.toml"
